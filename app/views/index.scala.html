@@ -1,0 +1,15 @@
+@(message: String, pelis: List[Peli], peliForm: Form[Peli])
+
+@main(message) {
+    <h1>@message</h1>
+    <ul>
+    @for(peli <- pelis) {
+     <li>@peli.titulo</li>
+    }
+    </ul>
+    <form action="@routes.Application.nuevaPeli()" method="post">
+      <input name="titulo">
+      <input type="submit" value="Crear">
+    </form>    
+    
+}
