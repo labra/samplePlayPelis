@@ -1,0 +1,28 @@
+@(message: String, pelis: List[Peli], form: Form[Peli])
+
+@main("Vista de Pelis") {
+    
+    <h1>Vista de pelis</h1>
+    <p>Realizado por 
+       <a href="http://www.uniovi.es">Uniovi</a>
+    </p>
+    
+    <ul>
+    @for( peli <- pelis) {
+     <li>@peli.titulo, @peli.id     
+       <form action="@routes.Application.borraPeli(peli.id)" 
+    	  method="get">
+         <input type="submit" value="Borrar" />
+       </form>
+
+     </li>
+    }
+    </ul>
+    
+    <form action="@routes.Application.nuevaPeli()" 
+    	  method="post">
+      <input name="titulo" />
+      <input type="submit" value="Crear" />
+    </form>
+    
+}
